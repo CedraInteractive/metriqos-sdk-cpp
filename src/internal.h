@@ -48,8 +48,39 @@ struct State {
 
 State& getState();
 
+// uuid.cpp
 std::string generateUUID();
 std::string nowISO8601();
+
+// client.cpp
 void log(LogLevel level, const std::string& msg);
+
+// transport.cpp
+struct HttpResponse {
+    int statusCode = 0;
+    std::string body;
+    std::string retryAfter;
+    std::string quotaRemaining;
+};
+
+HttpResponse httpPost(const std::string& url, const std::string& body,
+                      const std::string& apiKey, const std::string& userAgent);
+
+// retry.cpp
+int calculateBackoffMs(int attempt, int retryAfterSec);
+
+// batcher.cpp
+void enqueueEvent(Event event);
+void doFlush();
+void flushThreadLoop();
+
+// session.cpp
+void startSession();
+void endSession();
+void sendHeartbeat();
+void heartbeatThreadLoop();
+
+// device.cpp
+std::unordered_map<std::string, std::string> collectDeviceInfo();
 
 } // namespace Metriqos::Internal
