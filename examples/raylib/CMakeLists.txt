@@ -1,0 +1,7 @@
+find_package(raylib QUIET)
+if(raylib_FOUND)
+    add_executable(metriqos_raylib_demo main.cpp)
+    target_link_libraries(metriqos_raylib_demo PRIVATE metriqos raylib)
+else()
+    message(STATUS "raylib not found, skipping raylib example")
+endif()
