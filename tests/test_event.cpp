@@ -5,14 +5,14 @@
 #include <nlohmann/json.hpp>
 #include "internal.h"
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
     nlohmann::json eventToJson(const Event& e);
     nlohmann::json batchToJson(const std::vector<Event>& events);
 }
 
-using Metriqos::Internal::Event;
-using Metriqos::Internal::eventToJson;
-using Metriqos::Internal::batchToJson;
+using Teliqos::Internal::Event;
+using Teliqos::Internal::eventToJson;
+using Teliqos::Internal::batchToJson;
 
 void test_event_serialization_full() {
     std::cout << "  event_serialization_full... ";

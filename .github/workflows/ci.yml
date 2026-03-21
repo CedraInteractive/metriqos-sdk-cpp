@@ -22,7 +22,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libssl-dev
 
       - name: Configure
-        run: cmake -B build -DMETRIQOS_BUILD_TESTS=ON
+        run: cmake -B build -DTELIQOS_BUILD_TESTS=ON
 
       - name: Build
         run: cmake --build build

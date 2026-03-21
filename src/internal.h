@@ -1,5 +1,5 @@
 #pragma once
-#include "metriqos/metriqos.h"
+#include "teliqos/teliqos.h"
 #include <mutex>
 #include <thread>
 #include <atomic>
@@ -10,7 +10,7 @@
 
 struct sqlite3;
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 struct Event {
     std::string eventName;
@@ -106,4 +106,4 @@ void heartbeatThreadLoop();
 // device.cpp
 std::unordered_map<std::string, std::string> collectDeviceInfo();
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

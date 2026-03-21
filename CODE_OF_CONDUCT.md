@@ -18,7 +18,7 @@ We are committed to providing a welcoming and inclusive environment for everyone
 
 ## Enforcement
 
-Instances of unacceptable behavior may be reported to [support@metriqos.io](mailto:support@metriqos.io). All complaints will be reviewed and investigated. Maintainers have the right to remove, edit, or reject contributions that violate this Code of Conduct.
+Instances of unacceptable behavior may be reported to [support@teliqos.io](mailto:support@teliqos.io). All complaints will be reviewed and investigated. Maintainers have the right to remove, edit, or reject contributions that violate this Code of Conduct.
 
 ## Attribution
 

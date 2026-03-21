@@ -2,7 +2,7 @@
 #include <random>
 #include <algorithm>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 int calculateBackoffMs(int attempt, int retryAfterSec) {
     constexpr int maxRetries = 5;
@@ -32,4 +32,4 @@ int calculateBackoffMs(int attempt, int retryAfterSec) {
     return delayMs;
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

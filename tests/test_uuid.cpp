@@ -4,8 +4,8 @@
 #include <string>
 #include "internal.h"
 
-using Metriqos::Internal::generateUUID;
-using Metriqos::Internal::nowISO8601;
+using Teliqos::Internal::generateUUID;
+using Teliqos::Internal::nowISO8601;
 
 void test_uuid_uniqueness() {
     std::cout << "  uuid_uniqueness... ";

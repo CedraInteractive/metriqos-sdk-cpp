@@ -13,11 +13,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact: metriqos-linux-x64
+            artifact: teliqos-linux-x64
           - os: windows-latest
-            artifact: metriqos-windows-x64
+            artifact: teliqos-windows-x64
           - os: macos-latest
-            artifact: metriqos-macos-arm64
+            artifact: teliqos-macos-arm64
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libssl-dev
 
       - name: Configure
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DMETRIQOS_BUILD_TESTS=ON
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DTELIQOS_BUILD_TESTS=ON
 
       - name: Build
         run: cmake --build build --config Release
@@ -40,8 +40,8 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           mkdir -p pkg/include pkg/lib
-          cp -r include/metriqos pkg/include/
-          cp build/libmetriqos.a pkg/lib/
+          cp -r include/teliqos pkg/include/
+          cp build/libteliqos.a pkg/lib/
           tar -czf ${{ matrix.artifact }}.tar.gz -C pkg .
 
       - name: Package (Windows)
@@ -49,8 +49,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p pkg/include pkg/lib
-          cp -r include/metriqos pkg/include/
-          cp build/Release/metriqos.lib pkg/lib/
+          cp -r include/teliqos pkg/include/
+          cp build/Release/teliqos.lib pkg/lib/
           tar -czf ${{ matrix.artifact }}.tar.gz -C pkg .
 
       - uses: actions/upload-artifact@v4

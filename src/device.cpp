@@ -18,7 +18,7 @@
 #  include <fstream>
 #endif
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 std::unordered_map<std::string, std::string> collectDeviceInfo() {
     std::unordered_map<std::string, std::string> info;
@@ -73,4 +73,4 @@ std::unordered_map<std::string, std::string> collectDeviceInfo() {
     return info;
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

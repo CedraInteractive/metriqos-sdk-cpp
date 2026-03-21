@@ -24,5 +24,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - CI workflow (Windows, macOS, Linux)
 - Release workflow with prebuilt static libraries
 
-[Unreleased]: https://github.com/CedraInteractive/metriqos-sdk-cpp/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/CedraInteractive/metriqos-sdk-cpp/releases/tag/v0.1.0
+[Unreleased]: https://github.com/CedraInteractive/teliqos-sdk-cpp/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/CedraInteractive/teliqos-sdk-cpp/releases/tag/v0.1.0

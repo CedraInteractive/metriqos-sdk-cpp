@@ -1,6 +1,6 @@
 #include "internal.h"
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 void startSession() {
     auto& s = getState();
@@ -56,4 +56,4 @@ void heartbeatThreadLoop() {
     }
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

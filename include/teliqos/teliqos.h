@@ -5,7 +5,7 @@
 #include <functional>
 #include <cstdint>
 
-namespace Metriqos {
+namespace Teliqos {
 
 struct Vec3 { float x = 0, y = 0, z = 0; };
 
@@ -24,7 +24,7 @@ enum class LogLevel { None, Error, Warn, Debug };
 struct Config {
     std::string apiKey;
     std::string appVersion;
-    std::string endpoint = "https://api.metriqos.io";
+    std::string endpoint = "https://api.teliqos.io";
     int batchIntervalMs = 30000;
     int batchSize = 50;
     bool collectDeviceInfo = true;
@@ -52,4 +52,4 @@ struct Status {
 };
 Status getStatus();
 
-} // namespace Metriqos
+} // namespace Teliqos

@@ -1,7 +1,7 @@
 #include "internal.h"
 #include <nlohmann/json.hpp>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 nlohmann::json eventToJson(const Event& e) {
     nlohmann::json j;
@@ -47,4 +47,4 @@ nlohmann::json batchToJson(const std::vector<Event>& events) {
     return j;
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

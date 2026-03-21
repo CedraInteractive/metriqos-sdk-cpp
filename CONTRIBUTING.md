@@ -1,4 +1,4 @@
-# Contributing to metriqos-sdk-cpp
+# Contributing to teliqos-sdk-cpp
 
 Thank you for your interest in contributing! Here's how to get started.
 
@@ -7,13 +7,13 @@ Thank you for your interest in contributing! Here's how to get started.
 1. Fork the repository
 2. Clone your fork and create a branch:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/metriqos-sdk-cpp.git
-   cd metriqos-sdk-cpp
+   git clone https://github.com/YOUR_USERNAME/teliqos-sdk-cpp.git
+   cd teliqos-sdk-cpp
    git checkout -b my-feature
    ```
 3. Build and run tests:
    ```bash
-   cmake -B build -DMETRIQOS_BUILD_TESTS=ON
+   cmake -B build -DTELIQOS_BUILD_TESTS=ON
    cmake --build build
    cd build && ctest -C Debug --output-on-failure
    ```
@@ -36,12 +36,12 @@ Thank you for your interest in contributing! Here's how to get started.
 ## Code Style
 
 - Follow the existing style in the codebase
-- `Metriqos::` namespace for public API, `Metriqos::Internal::` for internals
+- `Teliqos::` namespace for public API, `Teliqos::Internal::` for internals
 - snake_case for files, PascalCase for types, camelCase for functions/variables
 
 ## Reporting Bugs
 
-Use the [bug report template](https://github.com/CedraInteractive/metriqos-sdk-cpp/issues/new?template=bug_report.yml) with:
+Use the [bug report template](https://github.com/CedraInteractive/teliqos-sdk-cpp/issues/new?template=bug_report.yml) with:
 - SDK version and platform
 - Minimal reproduction code
 - Expected vs actual behavior

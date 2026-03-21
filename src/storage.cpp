@@ -3,7 +3,7 @@
 #include <nlohmann/json.hpp>
 #include <stdexcept>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 // Forward declaration (event.cpp)
 nlohmann::json eventToJson(const Event& e);
@@ -138,4 +138,4 @@ void OfflineStorage::trimToSize() {
     }
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

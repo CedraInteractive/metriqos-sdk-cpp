@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report a bug in the Metriqos C++ SDK
+description: Report a bug in the Teliqos C++ SDK
 labels: ["bug"]
 body:
   - type: markdown

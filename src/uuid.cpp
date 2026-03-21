@@ -5,7 +5,7 @@
 #include <ctime>
 #include <chrono>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 std::string generateUUID() {
     static thread_local std::mt19937 gen(std::random_device{}());
@@ -52,4 +52,4 @@ std::string nowISO8601() {
     return oss.str();
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

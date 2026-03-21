@@ -2,7 +2,7 @@
 #include <curl/curl.h>
 #include <cstdio>
 
-namespace Metriqos {
+namespace Teliqos {
 
 namespace Internal {
 
@@ -18,7 +18,7 @@ void log(LogLevel level, const std::string& msg) {
     if (s.config.logCallback) {
         s.config.logCallback(level, msg);
     } else if (s.config.debug) {
-        fprintf(stderr, "[metriqos] %s\n", msg.c_str());
+        fprintf(stderr, "[teliqos] %s\n", msg.c_str());
     }
 }
 
@@ -37,7 +37,7 @@ void init(const Config& config) {
     // Initialize offline storage
     try {
         s.offlineStorage = std::make_unique<Internal::OfflineStorage>(
-            "metriqos_offline.db", config.offlineQueueSize);
+            "teliqos_offline.db", config.offlineQueueSize);
     } catch (const std::exception& e) {
         Internal::log(LogLevel::Error, std::string("Failed to init offline storage: ") + e.what());
     }
@@ -152,4 +152,4 @@ Status getStatus() {
     return st;
 }
 
-} // namespace Metriqos
+} // namespace Teliqos

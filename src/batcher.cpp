@@ -5,12 +5,12 @@
 #include <chrono>
 #include <algorithm>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 // Forward declaration (event.cpp)
 nlohmann::json batchToJson(const std::vector<Event>& events);
 
-static constexpr const char* kUserAgent = "metriqos-sdk-cpp/0.1.0";
+static constexpr const char* kUserAgent = "teliqos-sdk-cpp/0.1.0";
 
 static bool isExemptEvent(const std::string& name) {
     return name == "session_start" || name == "session_end" || name == "heartbeat";
@@ -157,4 +157,4 @@ void flushThreadLoop() {
     }
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

@@ -4,7 +4,7 @@
 #include <cstring>
 #include <algorithm>
 
-namespace Metriqos::Internal {
+namespace Teliqos::Internal {
 
 static size_t writeCallback(char* ptr, size_t size, size_t nmemb, void* userdata) {
     auto* body = static_cast<std::string*>(userdata);
@@ -81,4 +81,4 @@ HttpResponse httpPost(const std::string& url, const std::string& body,
     return resp;
 }
 
-} // namespace Metriqos::Internal
+} // namespace Teliqos::Internal

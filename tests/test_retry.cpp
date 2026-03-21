@@ -2,7 +2,7 @@
 #include <cassert>
 #include "internal.h"
 
-using Metriqos::Internal::calculateBackoffMs;
+using Teliqos::Internal::calculateBackoffMs;
 
 void test_backoff_attempt_0() {
     std::cout << "  backoff_attempt_0... ";
