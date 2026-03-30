@@ -138,4 +138,53 @@ void OfflineStorage::trimToSize() {
     }
 }
 
+std::string getSetting(const std::string& dbPath, const std::string& key) {
+    sqlite3* db = nullptr;
+    if (sqlite3_open(dbPath.c_str(), &db) != SQLITE_OK) {
+        if (db) sqlite3_close(db);
+        return "";
+    }
+
+    const char* createSql = "CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)";
+    sqlite3_exec(db, createSql, nullptr, nullptr, nullptr);
+
+    const char* selectSql = "SELECT value FROM settings WHERE key = ?";
+    sqlite3_stmt* stmt = nullptr;
+    std::string result;
+
+    if (sqlite3_prepare_v2(db, selectSql, -1, &stmt, nullptr) == SQLITE_OK) {
+        sqlite3_bind_text(stmt, 1, key.c_str(), -1, SQLITE_TRANSIENT);
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            result = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        }
+        sqlite3_finalize(stmt);
+    }
+
+    sqlite3_close(db);
+    return result;
+}
+
+void setSetting(const std::string& dbPath, const std::string& key, const std::string& value) {
+    sqlite3* db = nullptr;
+    if (sqlite3_open(dbPath.c_str(), &db) != SQLITE_OK) {
+        if (db) sqlite3_close(db);
+        return;
+    }
+
+    const char* createSql = "CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)";
+    sqlite3_exec(db, createSql, nullptr, nullptr, nullptr);
+
+    const char* upsertSql = "INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)";
+    sqlite3_stmt* stmt = nullptr;
+
+    if (sqlite3_prepare_v2(db, upsertSql, -1, &stmt, nullptr) == SQLITE_OK) {
+        sqlite3_bind_text(stmt, 1, key.c_str(), -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(stmt, 2, value.c_str(), -1, SQLITE_TRANSIENT);
+        sqlite3_step(stmt);
+        sqlite3_finalize(stmt);
+    }
+
+    sqlite3_close(db);
+}
+
 } // namespace Teliqos::Internal

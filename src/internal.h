@@ -106,4 +106,8 @@ void heartbeatThreadLoop();
 // device.cpp
 std::unordered_map<std::string, std::string> collectDeviceInfo();
 
+// storage.cpp (settings)
+std::string getSetting(const std::string& dbPath, const std::string& key);
+void setSetting(const std::string& dbPath, const std::string& key, const std::string& value);
+
 } // namespace Teliqos::Internal
