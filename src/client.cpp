@@ -27,7 +27,13 @@ void log(LogLevel level, const std::string& msg) {
 void init(const Config& config) {
     auto& s = Internal::getState();
     s.config = config;
-    s.playerId = Internal::generateUUID();
+    const std::string dbPath = "teliqos_offline.db";
+    s.deviceId = Internal::getSetting(dbPath, "device_id");
+    if (s.deviceId.empty()) {
+        s.deviceId = Internal::getHardwareId();
+        Internal::setSetting(dbPath, "device_id", s.deviceId);
+    }
+    s.playerId = s.deviceId;
     s.optedOut.store(false);
     s.quotaRemaining = -1;
     s.retryAfterSec = 0;
@@ -96,6 +102,7 @@ void track(const std::string& eventName, const EventData& data) {
     e.eventName = eventName;
     e.sessionId = s.sessionId;
     e.playerId = s.playerId;
+    e.deviceId = s.deviceId;
     e.timestamp = Internal::nowISO8601();
     e.appVersion = s.config.appVersion;
     e.category = data.category;

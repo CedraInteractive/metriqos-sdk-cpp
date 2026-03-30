@@ -21,6 +21,7 @@ void test_event_serialization_full() {
     e.category = "combat";
     e.sessionId = "sess-123";
     e.playerId = "player-456";
+    e.deviceId = "hw-device-001";
     e.timestamp = "2025-01-15T10:30:00.000Z";
     e.nums["damage"] = 75.5;
     e.strs["weapon"] = "sword";
@@ -38,6 +39,7 @@ void test_event_serialization_full() {
     assert(j["category"] == "combat");
     assert(j["session_id"] == "sess-123");
     assert(j["player_id"] == "player-456");
+    assert(j["device_id"] == "hw-device-001");
     assert(j["timestamp"] == "2025-01-15T10:30:00.000Z");
     assert(j["nums"]["damage"] == 75.5);
     assert(j["strs"]["weapon"] == "sword");
@@ -61,6 +63,7 @@ void test_event_serialization_optional_omitted() {
     e.eventName = "page_view";
     e.sessionId = "sess-789";
     e.playerId = "player-000";
+    e.deviceId = "hw-device-002";
     e.timestamp = "2025-01-15T10:30:00.000Z";
     // Leave category, mapId, device, appVersion empty
     // Leave hasPos = false
@@ -70,6 +73,7 @@ void test_event_serialization_optional_omitted() {
     assert(j.contains("event_name"));
     assert(j.contains("session_id"));
     assert(j.contains("player_id"));
+    assert(j.contains("device_id"));
     assert(j.contains("timestamp"));
     assert(!j.contains("category"));
     assert(!j.contains("map_id"));
@@ -88,12 +92,14 @@ void test_batch_serialization() {
     e1.eventName = "event_a";
     e1.sessionId = "s1";
     e1.playerId = "p1";
+    e1.deviceId = "hw-1";
     e1.timestamp = "2025-01-15T10:00:00.000Z";
 
     Event e2;
     e2.eventName = "event_b";
     e2.sessionId = "s2";
     e2.playerId = "p2";
+    e2.deviceId = "hw-2";
     e2.timestamp = "2025-01-15T10:01:00.000Z";
 
     auto j = batchToJson({e1, e2});

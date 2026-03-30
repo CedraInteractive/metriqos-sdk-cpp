@@ -17,6 +17,7 @@ struct Event {
     std::string category;
     std::string sessionId;
     std::string playerId;
+    std::string deviceId;
     std::string timestamp;
     std::unordered_map<std::string, double> nums;
     std::unordered_map<std::string, std::string> strs;
@@ -49,6 +50,7 @@ private:
 struct State {
     Config config;
     std::string playerId;
+    std::string deviceId;
     std::string sessionId;
     std::unordered_map<std::string, std::string> userStrProps;
     std::unordered_map<std::string, double> userNumProps;

@@ -8,6 +8,7 @@ nlohmann::json eventToJson(const Event& e) {
     j["event_name"] = e.eventName;
     j["session_id"] = e.sessionId;
     j["player_id"] = e.playerId;
+    j["device_id"] = e.deviceId;
     j["timestamp"] = e.timestamp;
 
     if (!e.category.empty()) {

@@ -10,6 +10,7 @@ void startSession() {
     e.eventName = "session_start";
     e.sessionId = s.sessionId;
     e.playerId = s.playerId;
+    e.deviceId = s.deviceId;
     e.timestamp = nowISO8601();
     e.appVersion = s.config.appVersion;
     e.device = s.deviceInfo;
@@ -26,6 +27,7 @@ void endSession() {
     e.eventName = "session_end";
     e.sessionId = s.sessionId;
     e.playerId = s.playerId;
+    e.deviceId = s.deviceId;
     e.timestamp = nowISO8601();
     e.appVersion = s.config.appVersion;
 
@@ -41,6 +43,7 @@ void sendHeartbeat() {
     e.eventName = "heartbeat";
     e.sessionId = s.sessionId;
     e.playerId = s.playerId;
+    e.deviceId = s.deviceId;
     e.timestamp = nowISO8601();
     e.appVersion = s.config.appVersion;
 
