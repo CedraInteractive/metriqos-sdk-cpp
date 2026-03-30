@@ -5,19 +5,19 @@ namespace Teliqos::Internal {
 
 nlohmann::json eventToJson(const Event& e) {
     nlohmann::json j;
-    j["eventName"] = e.eventName;
-    j["sessionId"] = e.sessionId;
-    j["playerId"] = e.playerId;
+    j["event_name"] = e.eventName;
+    j["session_id"] = e.sessionId;
+    j["player_id"] = e.playerId;
     j["timestamp"] = e.timestamp;
 
     if (!e.category.empty()) {
         j["category"] = e.category;
     }
     if (!e.appVersion.empty()) {
-        j["appVersion"] = e.appVersion;
+        j["app_version"] = e.appVersion;
     }
     if (!e.mapId.empty()) {
-        j["mapId"] = e.mapId;
+        j["map_id"] = e.mapId;
     }
     if (!e.nums.empty()) {
         j["nums"] = e.nums;
