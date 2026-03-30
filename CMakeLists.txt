@@ -12,6 +12,8 @@ set(BUILD_CURL_EXE OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 set(HTTP_ONLY ON CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+set(CURL_DISABLE_INSTALL ON CACHE BOOL "" FORCE)
+set(CURL_USE_LIBPSL OFF CACHE BOOL "" FORCE)
 if(WIN32)
   set(CURL_USE_SCHANNEL ON CACHE BOOL "" FORCE)
   set(CURL_USE_OPENSSL OFF CACHE BOOL "" FORCE)
@@ -40,7 +42,7 @@ else()
   set(CURL_USE_OPENSSL ON CACHE BOOL "" FORCE)
 endif()
 FetchContent_Declare(curl
-  URL https://github.com/curl/curl/releases/download/curl-8_7_1/curl-8.7.1.tar.xz)
+  URL https://github.com/curl/curl/releases/download/curl-8_12_1/curl-8.12.1.tar.xz)
 
 FetchContent_MakeAvailable(json curl)
 
