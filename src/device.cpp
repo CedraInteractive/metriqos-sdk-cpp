@@ -73,4 +73,57 @@ std::unordered_map<std::string, std::string> collectDeviceInfo() {
     return info;
 }
 
+std::string getHardwareId() {
+#ifdef _WIN32
+    HKEY hKey;
+    if (RegOpenKeyExA(HKEY_LOCAL_MACHINE,
+            "SOFTWARE\\Microsoft\\Cryptography", 0, KEY_READ, &hKey) == ERROR_SUCCESS) {
+        char buffer[256] = {};
+        DWORD size = sizeof(buffer);
+        if (RegQueryValueExA(hKey, "MachineGuid", nullptr, nullptr,
+                reinterpret_cast<LPBYTE>(buffer), &size) == ERROR_SUCCESS) {
+            RegCloseKey(hKey);
+            std::string id(buffer);
+            if (!id.empty()) return id;
+        }
+        RegCloseKey(hKey);
+    }
+#elif defined(__APPLE__)
+    FILE* pipe = popen("ioreg -rd1 -c IOPlatformExpertDevice | grep IOPlatformUUID", "r");
+    if (pipe) {
+        char buffer[256] = {};
+        if (fgets(buffer, sizeof(buffer), pipe)) {
+            std::string line(buffer);
+            auto start = line.find('"', line.find("IOPlatformUUID"));
+            if (start != std::string::npos) {
+                start = line.find('"', start + 1);
+                if (start != std::string::npos) {
+                    auto end = line.find('"', start + 1);
+                    if (end != std::string::npos) {
+                        pclose(pipe);
+                        return line.substr(start + 1, end - start - 1);
+                    }
+                }
+            }
+        }
+        pclose(pipe);
+    }
+#elif defined(__linux__) && !defined(__ANDROID__)
+    FILE* f = fopen("/etc/machine-id", "r");
+    if (f) {
+        char buffer[64] = {};
+        if (fgets(buffer, sizeof(buffer), f)) {
+            fclose(f);
+            std::string id(buffer);
+            while (!id.empty() && (id.back() == '\n' || id.back() == '\r'))
+                id.pop_back();
+            if (!id.empty()) return id;
+        } else {
+            fclose(f);
+        }
+    }
+#endif
+    return generateUUID();
+}
+
 } // namespace Teliqos::Internal

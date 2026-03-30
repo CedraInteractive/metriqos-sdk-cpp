@@ -105,6 +105,7 @@ void heartbeatThreadLoop();
 
 // device.cpp
 std::unordered_map<std::string, std::string> collectDeviceInfo();
+std::string getHardwareId();
 
 // storage.cpp (settings)
 std::string getSetting(const std::string& dbPath, const std::string& key);
