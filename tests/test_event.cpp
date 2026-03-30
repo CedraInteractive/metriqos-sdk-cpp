@@ -17,10 +17,10 @@ using Teliqos::Internal::batchToJson;
 void test_event_serialization_full() {
     std::cout << "  event_serialization_full... ";
     Event e;
-    e.event_name = "player_kill";
+    e.eventName = "player_kill";
     e.category = "combat";
-    e.session_id = "sess-123";
-    e.player_id = "player-456";
+    e.sessionId = "sess-123";
+    e.playerId = "player-456";
     e.timestamp = "2025-01-15T10:30:00.000Z";
     e.nums["damage"] = 75.5;
     e.strs["weapon"] = "sword";
@@ -58,9 +58,9 @@ void test_event_serialization_full() {
 void test_event_serialization_optional_omitted() {
     std::cout << "  event_serialization_optional_omitted... ";
     Event e;
-    e.event_name = "page_view";
-    e.session_id = "sess-789";
-    e.player_id = "player-000";
+    e.eventName = "page_view";
+    e.sessionId = "sess-789";
+    e.playerId = "player-000";
     e.timestamp = "2025-01-15T10:30:00.000Z";
     // Leave category, mapId, device, appVersion empty
     // Leave hasPos = false
@@ -85,15 +85,15 @@ void test_event_serialization_optional_omitted() {
 void test_batch_serialization() {
     std::cout << "  batch_serialization... ";
     Event e1;
-    e1.event_name = "event_a";
-    e1.session_id = "s1";
-    e1.player_id = "p1";
+    e1.eventName = "event_a";
+    e1.sessionId = "s1";
+    e1.playerId = "p1";
     e1.timestamp = "2025-01-15T10:00:00.000Z";
 
     Event e2;
-    e2.event_name = "event_b";
-    e2.session_id = "s2";
-    e2.player_id = "p2";
+    e2.eventName = "event_b";
+    e2.sessionId = "s2";
+    e2.playerId = "p2";
     e2.timestamp = "2025-01-15T10:01:00.000Z";
 
     auto j = batchToJson({e1, e2});
