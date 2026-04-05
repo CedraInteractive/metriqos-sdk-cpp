@@ -25,6 +25,7 @@ struct Config {
     std::string apiKey;
     std::string appVersion;
     std::string endpoint = "https://api.teliqos.io";
+    std::string storagePath; // Directory for SQLite storage. Empty = current working dir.
     int batchIntervalMs = 30000;
     int batchSize = 50;
     bool collectDeviceInfo = true;

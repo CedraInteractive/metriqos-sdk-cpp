@@ -27,7 +27,9 @@ void log(LogLevel level, const std::string& msg) {
 void init(const Config& config) {
     auto& s = Internal::getState();
     s.config = config;
-    const std::string dbPath = "teliqos_offline.db";
+    const std::string dbPath = config.storagePath.empty()
+        ? std::string("teliqos_offline.db")
+        : config.storagePath + "/teliqos_offline.db";
     s.deviceId = Internal::getSetting(dbPath, "device_id");
     if (s.deviceId.empty()) {
         s.deviceId = Internal::getHardwareId();
@@ -43,7 +45,7 @@ void init(const Config& config) {
     // Initialize offline storage
     try {
         s.offlineStorage = std::make_unique<Internal::OfflineStorage>(
-            "teliqos_offline.db", config.offlineQueueSize);
+            dbPath, config.offlineQueueSize);
     } catch (const std::exception& e) {
         Internal::log(LogLevel::Error, std::string("Failed to init offline storage: ") + e.what());
     }
